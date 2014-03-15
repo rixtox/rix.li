@@ -19,7 +19,8 @@ module.exports = (grunt) ->
     copy:
       files:
         expand: on
-        src: 'src/assets/**'
+        cwd: 'src'
+        src: 'assets/**'
         dest: "#{dest}"
 
     jade:

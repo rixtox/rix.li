@@ -60,7 +60,7 @@ p, ul
 .dimmed
   color lighten($color_05, 50%)
 
-h1.posttitle
+.posttitle
   PostTitleColor()
 
 .header
@@ -69,22 +69,18 @@ h1.posttitle
 .article
   ArticleColor()
 
-h1.blogtitle a
-  background-color $color_03 - rgba(0,0,0,.15)
-  color #fff
-  padding ($golden / 6) + 0em
-
-h1.blogtitle, h1.blogtitle a
+.blogtitle
   font-size 4.5rem
-  text-decoration none
 
-h4.blogdescription, h4.blogdescription a
-  font-size 1.6rem
-  text-decoration none
-  color $color_05
-  margin-bottom 0
+.blogdescription
+  font-size 2.6rem
 
-h1.posttitle
+.blogtitle, .blogdescription
+  color #fff
+  margin 0
+  -webkit-filter blur(1px)
+
+.posttitle
   mt0()
   background-color transparent
   border-bottom ($golden /  40) + 0em solid $color_03

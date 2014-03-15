@@ -1,27 +1,5 @@
-{{#if @blog.cover }}
 .header(role='banner')
-  .bottom
-  .top
-  | {{#if @blog.logo}}
-  a.logo(href='{{@blog.url}}')
-    img(src='{{@blog.logo}}', alt='{{@blog.title}}')
-  | {{/if}}
-  h1.blogtitle
+  .blur
     a(title='{{@blog.title}}', href='{{@blog.url}}')
-      | {{{@blog.title}}}
-  h4.blogdescription
-    a.darker(title='{{@blog.title}}', href='{{@blog.url}}')
-      | {{@blog.description}}
-| {{ else }}
-.header(role='banner')
-  | {{#if @blog.logo}}
-  a.logo(href='{{@blog.url}}')
-    img(src='{{@blog.logo}}', alt='{{@blog.title}}')
-  | {{/if}}
-  h1.blogtitle
-    a(title='{{@blog.title}}', href='{{@blog.url}}')
-      | {{{@blog.title}}}
-  h4.blogdescription
-    a(title='{{@blog.title}}', href='{{@blog.url}}')
-      | {{@blog.description}}
-| {{/if}}
+      h1.blogtitle {{{@blog.title}}}
+      h4.blogdescription {{@blog.description}}
