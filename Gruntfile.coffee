@@ -1,4 +1,4 @@
-dest = 'dest'
+dest = '../build'
 
 module.exports = (grunt) ->
   grunt.initConfig
