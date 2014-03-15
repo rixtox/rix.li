@@ -3,6 +3,7 @@
   <main role="main" class="main">
     {{#post}}
     {{#contentFor "metaTitle"}}{{title}} - {{@blog.title}}{{/contentFor}}
+    {{#contentFor "disqus_identifier"}}{{id}}{{/contentFor}}
     <article role="article" itemscope="itemscope" itemtype="http://schema.org/Article" class="article">
       <header class="postheader">
         <h1 id="header" itemprop="headline" class="posttitle">{{title}}</h1>
@@ -35,15 +36,7 @@
       </footer>
       <h3>Post Your Words</h3>
       <div id="disqus_thread"></div>
-      <script>
-        var disqus_shortname = dq_id;
-        var disqus_identifier = '{{post.id}}';
-        (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-      </script>
+      <script>var disqus_identifier = '{{id}}';</script>
     </article>{{/post}}
     {{#if pagination}}
     <div class="pagination">{{{pagination}}}</div>{{/if}}

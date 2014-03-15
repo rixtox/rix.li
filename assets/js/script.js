@@ -120,6 +120,7 @@
       }
       $newContent = $(result).filter('#ajax-container').html();
       title = $(result).filter('title').text();
+      window.disqus_identifier = $(result).filter('meta[name=disqus_identifier]').attr('content');
       History.replaceState({}, title, decodeURIComponent(location.href));
       $('html, body').animate({
         scrollTop: 0
@@ -129,6 +130,9 @@
         $ajaxContainer.fadeIn(500);
         if (typeof initContent === "function") {
           initContent();
+        }
+        if (disqus_identifier) {
+          reloadDisqus();
         }
         NProgress.done();
         return loading = false;
@@ -157,6 +161,17 @@
     $('pre').addClass('prettyprint linenums');
     prettyPrint();
     return $('.postcontent a').attr('target', '_blank');
+  };
+
+  window.reloadDisqus = function() {
+    return (typeof DISQUS !== "undefined" && DISQUS !== null) && DISQUS.reset({
+      reload: true,
+      config: function() {
+        this.page.identifier = disqus_identifier;
+        this.page.title = document.title;
+        return this.page.url = decodeURIComponent(location.href);
+      }
+    });
   };
 
   $(document).ready(function() {
