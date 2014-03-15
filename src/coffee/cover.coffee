@@ -51,25 +51,23 @@ nextImage = ->
 
 class Loader
   constructor: (@el, @transition) ->
-    @el = [].concat @el
     @loaded = @shown = no
-    @addStyle "transition: opacity #{@transition}s;"
-  addStyle: (style) ->
-    index = document.styleSheets.length - 1
-    for el in @el
-      document.styleSheets[index]
-      .addRule @el, style
+    @css transition: "opacity #{@transition}s"
+  css: ->
+    $(@el).css arguments...
   hide: ->
     @shown = no
-    @addStyle "opacity: 0;"
+    @css opacity: 0
   load: (url, callback) ->
-    @addStyle "background-image: url(#{url}); opacity: 1;"
+    @css
+      'background-image': "url(#{url})"
+      opacity: 1
     @loaded = @shown = yes
     setTimeout callback, @transition
 
 $(document).ready ->
   pageLoaded = yes
-  top = new Loader '.header:after', transition
-  bottom = new Loader '.header:before', transition
+  top = new Loader '.header .top', transition
+  bottom = new Loader '.header .bottom', transition
   setTimeout nextImage, timeInterval
 
