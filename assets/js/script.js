@@ -144,7 +144,7 @@
     var baseURL, currentState, title, url;
     url = decodeURIComponent($(this).attr('href'));
     baseURL = window.location.origin.replace('/', '\\/').replace(':', '\\:');
-    if (url.match(new RegExp("^(\.?\.?\/)|" + baseURL)) && !$(this).hasClass('no-ajax' && !$(this).attr('target') === '_blank')) {
+    if (url.match(new RegExp("^(\.?\.?\/)|" + baseURL)) && !$(this).hasClass('no-ajax') && !$(this).attr('target') === '_blank') {
       e.preventDefault();
       currentState = History.getState();
       title = $(this).attr('title' || blog_title);
