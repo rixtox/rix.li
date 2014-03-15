@@ -1,5 +1,5 @@
 (function() {
-  var Loader, base, bottom, covers, currentImage, images, nextImage, pageLoaded, timeInterval, top, total, transition;
+  var Loader, base, bottom, covers, currentImage, images, nextImage, timeInterval, top, total, transition;
 
   base = '//imageshack.com/a/img';
 
@@ -15,26 +15,24 @@
 
   total = covers.length;
 
-  top = bottom = pageLoaded = null;
+  top = bottom = null;
 
   covers.every(function(url) {
     return $('<img>').attr('src', url).load(function() {
       $(this).remove();
       images.push(url);
-      if (pageLoaded) {
-        if (!top.loaded) {
-          return top.load(url);
-        }
+      if (currentImage < 0) {
+        return nextImage();
       }
     });
   });
 
   nextImage = function() {
     var l, next, toHide, toShow, url, _ref, _ref1;
-    if (top.shown) {
-      _ref = [top, bottom], toHide = _ref[0], toShow = _ref[1];
+    if (bottom.shown) {
+      _ref = [bottom, top], toHide = _ref[0], toShow = _ref[1];
     } else {
-      _ref1 = [bottom, top], toHide = _ref1[0], toShow = _ref1[1];
+      _ref1 = [top, bottom], toHide = _ref1[0], toShow = _ref1[1];
     }
     if (l = images.length) {
       if (l > (next = currentImage + 1)) {
@@ -88,10 +86,8 @@
   })();
 
   $(document).ready(function() {
-    pageLoaded = true;
     top = new Loader('.header .top', transition);
-    bottom = new Loader('.header .bottom', transition);
-    return setTimeout(nextImage, timeInterval);
+    return bottom = new Loader('.header .bottom', transition);
   });
 
 }).call(this);
