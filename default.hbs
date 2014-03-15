@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <script>
+      blog_title = '{{@blog.title}}';
+      dq_id = 'rixli';
+      ga_id = 'UA-47839992-1';
+      ga_url = 'rix.li';
+    </script>
+    <title>{{{block "metaTitle"}}}</title>
+    <meta name="description" content="{{meta_description}}">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.0/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset "vendor/highlighter/prettify.css"}}">
+    <link rel="stylesheet" type="text/css" href="{{asset "vendor/nprogress/nprogress.css"}}">
+    <link rel="stylesheet" type="text/css" href="{{asset "css/style.css"}}">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">{{ghost_head}}
+  </head>
+  <body class="{{body_class}}">
+    {{{customSiteHtml}}}
+    {{> header}}
+    <div id="ajax-container">{{{body}}}</div>{{> footer}}
+    {{ghost_foot}}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.3/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+    <script src="{{asset "vendor/history/jquery.history.js"}}"></script>
+    <script src="{{asset "vendor/highlighter/prettify.js"}}"></script>
+    <script src="{{asset "vendor/nprogress/nprogress.js"}}"></script>
+    <script src="{{asset "js/script.js"}}"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', ga_id, ga_url);
+      ga('send', 'pageview');
+    </script>
+  </body>
+</html>

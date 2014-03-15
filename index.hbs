@@ -1,0 +1,23 @@
+
+{{!< default}}
+{{#contentFor "metaTitle"}}{{@blog.title}}{{/contentFor}}
+<div class="wrapper">
+  <main role="main" class="main">{{#foreach posts}}
+    <article role="article" itemscope="itemscope" itemtype="http://schema.org/Article" class="article">
+      <header class="postheader">
+        <h1 itemprop="headline" class="posttitle"><a href="{{{url}}}" rel="bookmark">{{title}}</a></h1>
+      </header>
+      <div itemprop="articleBody" class="postcontent">{{content words=50}}</div>
+      <div class="readmore"><a href="{{{url}}}" rel="bookmark" class="btn">Read More →</a></div>
+      <footer class="article_meta"><span class="dimmed">Posted on </span>
+        <time datetime="{{date format="YYYY-MM-DD"}}" itemprop="datePublished" class="date">{{date format='dddd DD MMM YYYY'}}</time>{{#if tags}}
+        <div><span class="dimmed">Tagged in </span><span>{{tags separator=" , "}}</span></div>{{/if}}
+      </footer>
+    </article>{{/foreach}}
+    {{#if pagination}}
+    <div class="pagination-wrap">
+      {{{pagination}}}
+      {{/if}}
+    </div>
+  </main>
+</div>

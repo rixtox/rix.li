@@ -1,0 +1,51 @@
+{{!< default}}
+<div class="wrapper">
+  <main role="main" class="main">
+    {{#post}}
+    {{#contentFor "metaTitle"}}{{title}} - {{@blog.title}}{{/contentFor}}
+    <article role="article" itemscope="itemscope" itemtype="http://schema.org/Article" class="article">
+      <header class="postheader">
+        <h1 id="header" itemprop="headline" class="posttitle">{{title}}</h1>
+      </header>
+      <div itemprop="articleBody" class="postcontent">{{content}}</div>
+      <footer class="article_meta">
+        <div class="left">
+          <div><span class="dimmed">Posted on </span>
+            <time datetime="{{date format="YYYY-MM-DD"}}" itemprop="datePublished" class="date">{{date format='dddd DD MMM YYYY'}}</time>
+          </div>{{#if tags}}
+          <div><span class="dimmed">Tagged in </span><span>{{tags separator=" , "}}</span></div>{{/if}}
+        </div>
+        <div class="right text-right">
+          <h6 class="share dimmed">Share this post</h6><a target="_blank" href="http://twitter.com/share?text={{title}}&url={{url absolute="true"}}" class="share btn"><i class="fa fa-twitter"></i><span class="hidethis"></span></a><a target="_blank" href="http://www.facebook.com/sharer.php?u={{url absolute="true"}}" class="share btn"><i class="fa fa-facebook"></i><span class="hidethis"></span></a><a target="_blank" href="https://plus.google.com/share?url={{url absolute="true"}}" class="share btn"><i class="fa fa-google-plus"></i><span class="hidethis"></span></a>
+        </div>
+        <div class="clear"></div>{{#if author}}
+        <div class="postauther">
+          <address itemscope="itemscope" itemtype="http://schema.org/Person">{{#if author.image}}
+            <figure class="user-image">
+              <div itemprop="image" style="background-image: url({{author.image}}&amp;s=200);" class="authorimage"></div>
+            </figure>{{/if}}
+            <h6 class="authorname"><span itemprop="name">{{author.name}}</span></h6>{{#if author.website}}
+            <div class="authorwebsite"><a href="{{author.website}}" itemprop="url">{{author.website}}</a></div>{{/if}}
+            <div class="authorbio">
+              <p>{{author.bio}}</p>
+            </div>
+            <div class="clear"></div>
+          </address>
+        </div>{{/if}}
+      </footer>
+      <h3>Post Your Words</h3>
+      <div id="disqus_thread"></div>
+      <script>
+        var disqus_shortname = dq_id;
+        var disqus_identifier = '{{post.id}}';
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </article>{{/post}}
+    {{#if pagination}}
+    <div class="pagination">{{{pagination}}}</div>{{/if}}
+  </main>
+</div>
