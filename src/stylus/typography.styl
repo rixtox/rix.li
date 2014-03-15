@@ -1,0 +1,95 @@
+HeaderFont()
+  font-family $header_font
+  line-height 1.313em
+  font-weight 400
+
+body
+  BodyColor()
+  margin 0
+  font-family $default_font
+  line-height $golden + 0em
+  font-weight 300
+  word-wrap break-word
+
+a
+  background transparent
+
+a:link, a:visited
+  LinkColor()
+
+a:focus
+  outline thin dotted
+
+a:active, a:hover
+  LinkHoverColor()
+  outline 0
+
+h1
+  HeaderFont()
+  font-size 3em
+  margin 0.563em 0 ((0.563/3)+ 0em)
+
+h2
+  HeaderFont()
+  font-size 2.25em
+  margin 0.625em 0 ((0.625/3)+ 0em)
+
+h3
+  HeaderFont()
+  font-size 1.5em
+  margin 1.313em 0 ((1.313/3)+ 0em)
+
+h4
+  HeaderFont()
+  font-size 1.313em
+  margin 1.313em 0 ((1.313/3)+ 0em)
+
+h5
+  HeaderFont()
+  font-size 1.125em
+  margin 1.313em 0 ((1.313/3)+ 0em)
+
+h6
+  HeaderFont()
+  font-size 1em
+  margin 0.75em 0 ((0.75/3)+ 0em)
+
+p, ul
+  margin 1.2rem 0
+
+.dimmed
+  color lighten($color_05, 50%)
+
+h1.posttitle
+  PostTitleColor()
+
+.header
+  HeaderColor()
+
+.article
+  ArticleColor()
+
+h1.blogtitle a
+  background-color $color_03 - rgba(0,0,0,.15)
+  color #fff
+  padding ($golden / 6) + 0em
+
+h1.blogtitle, h1.blogtitle a
+  font-size 4.5rem
+  text-decoration none
+
+h4.blogdescription, h4.blogdescription a
+  font-size 1.6rem
+  text-decoration none
+  color $color_05
+  margin-bottom 0
+
+h1.posttitle
+  mt0()
+  background-color transparent
+  border-bottom ($golden /  40) + 0em solid $color_03
+  color $color_03
+  font-weight 300
+  a, alink, avisited
+    color $color_03
+  

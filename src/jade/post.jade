@@ -1,0 +1,70 @@
+| {{!< default}}
+.wrapper
+  main.main(role='main')
+    | {{#post}}
+    | {{#contentFor "metaTitle"}}{{title}} - {{@blog.title}}{{/contentFor}}
+    article.article(role='article', itemscope='itemscope', itemtype='http://schema.org/Article')
+      header.postheader
+        h1#header.posttitle(itemprop='headline') {{title}}
+      .postcontent(itemprop='articleBody')
+        | {{content}}
+      footer.article_meta
+        .left
+          div
+            span.dimmed Posted on 
+            time.date(datetime!='{{date format="YYYY-MM-DD"}}', itemprop='datePublished')
+              | {{date format='dddd DD MMM YYYY'}}
+          | {{#if tags}}
+          div
+            span.dimmed
+              | Tagged in 
+            span
+              | {{tags separator=" , "}}
+          | {{/if}}
+        .right.text-right
+          h6.share.dimmed
+            | Share this post
+          a.share.btn(target='_blank', href!='http://twitter.com/share?text={{title}}&url={{url absolute="true"}}')
+            i.fa.fa-twitter
+            span.hidethis
+          a.share.btn(target='_blank', href!='http://www.facebook.com/sharer.php?u={{url absolute="true"}}')
+            i.fa.fa-facebook
+            span.hidethis
+          a.share.btn(target='_blank', href!='https://plus.google.com/share?url={{url absolute="true"}}')
+            i.fa.fa-google-plus
+            span.hidethis
+        .clear
+        | {{#if author}}
+        .postauther
+          address(itemscope='itemscope', itemtype='http://schema.org/Person')
+            | {{#if author.image}}
+            figure.user-image
+              .authorimage(itemprop='image', style='background-image: url({{author.image}}&s=200);')
+            | {{/if}}
+            h6.authorname
+              span(itemprop='name')
+                | {{author.name}}
+            | {{#if author.website}}
+            .authorwebsite
+              a(href='{{author.website}}', itemprop='url')
+                | {{author.website}}
+            | {{/if}}
+            .authorbio
+              p {{author.bio}}
+            .clear
+        | {{/if}}
+      h3 Post Your Words
+      #disqus_thread
+      script
+        | var disqus_shortname = dq_id;
+        | var disqus_identifier = '{{post.id}}';
+        | (function() {
+        | var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        | dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        | (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        | })();
+    | {{/post}}
+    | {{#if pagination}}
+    .pagination
+      | {{{pagination}}}
+    | {{/if}}

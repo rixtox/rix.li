@@ -1,0 +1,32 @@
+//**
+// Mixins
+//**
+
+BodyColor()
+  background-color $color_01
+  color $color_05
+
+LinkColor()
+  color $color_03
+
+LinkHoverColor()
+  color $color_02
+
+HeaderColor()
+  background-color transparent
+
+ArticleColor()
+  background white
+  a, a:link, a:visited
+    color $color_03
+  a:hover, a:focus
+    color $color_02
+
+PostTitleColor()
+  background-color transparent
+  color $color_03
+  a, a:link, a:visited
+    color $color_03
+    text-decoration none
+  a:hover, a:focus
+    color $color_03
