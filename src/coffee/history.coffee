@@ -38,9 +38,9 @@ $('body').on 'click', 'a', (e) ->
   baseURL = window.location.origin
     .replace '/', '\\/'
     .replace ':', '\\:'
-  if url.match(new RegExp("^(\.?\.?\/)|#{baseURL}")) and
-  not $(@).hasClass 'no-ajax' and
-  not $(@).attr('target') is '_blank'
+  if (new RegExp("^(\.?\.?\/)|#{baseURL}")).test(url) and
+  not $(@).hasClass('no-ajax') and
+  not ($(@).attr('target') is '_blank')
     e.preventDefault()
     currentState = History.getState()
     title = $(@).attr 'title' || blog_title
