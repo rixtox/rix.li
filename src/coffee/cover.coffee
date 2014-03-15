@@ -20,7 +20,7 @@ transition = 1.5
 images = []
 currentImage = -1
 total = covers.length
-top = bottom = pageLoaded = null
+top = bottom = null
 
 covers.every (url) ->
   $ '<img>'
@@ -28,15 +28,14 @@ covers.every (url) ->
   .load ->
     $(@).remove()
     images.push url
-    if pageLoaded
-      unless top.loaded
-        top.load url
+    if currentImage < 0
+      nextImage()
 
 nextImage = ->
-  if top.shown
-    [toHide, toShow] = [top, bottom]
-  else
+  if bottom.shown
     [toHide, toShow] = [bottom, top]
+  else
+    [toHide, toShow] = [top, bottom]
   if l = images.length
     if l > next = currentImage + 1
       url = images[next]
@@ -66,8 +65,5 @@ class Loader
     setTimeout callback, @transition
 
 $(document).ready ->
-  pageLoaded = yes
   top = new Loader '.header .top', transition
   bottom = new Loader '.header .bottom', transition
-  setTimeout nextImage, timeInterval
-

@@ -14,6 +14,7 @@ History.Adapter.bind window, 'statechange', ->
     return unless loading is url
     $newContent = $(result).filter('#ajax-container').html()
     title = $(result).filter('title').text()
+    window.disqus_identifier = $(result).filter('meta[name=disqus_identifier]').attr 'content'
     History.replaceState {}, title
     , decodeURIComponent location.href
 
@@ -25,6 +26,9 @@ History.Adapter.bind window, 'statechange', ->
       $ajaxContainer.fadeIn 500
 
       initContent?()
+
+      if disqus_identifier
+        reloadDisqus()
 
       NProgress.done()
       loading = no
