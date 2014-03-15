@@ -10,7 +10,7 @@ LinkColor()
   color $color_03
 
 LinkHoverColor()
-  color $color_02
+  color $color_03 - 20%
 
 HeaderColor()
   background-color transparent
@@ -18,15 +18,15 @@ HeaderColor()
 ArticleColor()
   background white
   a, a:link, a:visited
-    color $color_03
+    LinkColor()
   a:hover, a:focus
-    color $color_02
+    LinkHoverColor()
 
 PostTitleColor()
   background-color transparent
   color $color_03
   a, a:link, a:visited
-    color $color_03
+    LinkColor()
     text-decoration none
   a:hover, a:focus
-    color $color_03
+    LinkHoverColor()
