@@ -1,7 +1,7 @@
 (function() {
   var Loader, base, bottom, covers, currentImage, images, nextImage, timeInterval, top, total, transition;
 
-  base = '//imageshack.com/a/img';
+  base = 'https://imageshack.com/a/img';
 
   covers = ["" + base + "89/1258/vbxb.jpg", "" + base + "822/6477/6zzm.jpg", "" + base + "600/3735/bxdt.jpg", "" + base + "546/7725/mqw3.jpg", "" + base + "31/7246/0cwv.jpg", "" + base + "594/843/scsr.jpg", "" + base + "401/5414/zdao.jpg", "" + base + "855/8475/9hab.jpg", "" + base + "36/9311/uxij.jpg", "" + base + "577/7841/2ljc.jpg", "" + base + "842/4782/58i4.jpg", "" + base + "841/4355/3hn9.jpg", "" + base + "37/6219/mmk2.jpg"];
 
