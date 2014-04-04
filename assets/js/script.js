@@ -1,5 +1,5 @@
 (function() {
-  var Loader, base, bottom, covers, currentImage, images, nextImage, timeInterval, top, total, transition;
+  var Loader, base, bottom, covers, currentImage, images, loadImages, nextImage, timeInterval, top, total, transition;
 
   base = '//imageshack.com/a/img';
 
@@ -17,7 +17,7 @@
 
   top = bottom = null;
 
-  covers.every(function(url) {
+  loadImages = function(url) {
     return $('<img>').attr('src', url).load(function() {
       $(this).remove();
       images.push(url);
@@ -25,7 +25,7 @@
         return nextImage();
       }
     });
-  });
+  };
 
   nextImage = function() {
     var l, next, toHide, toShow, url, _ref, _ref1;
@@ -86,6 +86,7 @@
   })();
 
   $(document).ready(function() {
+    covers.every(loadImages);
     top = new Loader('.header .top', transition);
     return bottom = new Loader('.header .bottom', transition);
   });
